@@ -1,0 +1,12 @@
+{
+  "python.linting.pylintEnabled": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#f256c1",
+    "titleBar.activeBackground": "#f256c1",
+    "titleBar.inactiveBackground": "#f256c1",
+    "statusBar.foreground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "MOODIBLE FRONTEND"
+}
