@@ -7,6 +7,11 @@ function Register(){
     console.log('value', e.target.value, 'name', e.target.name)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('submitted')
+  }
+
   return (
     <section className="section">
       <div className="container">
@@ -74,7 +79,10 @@ function Register(){
               </div>
             </div>
             <div className="field">
-              <button type="submit" className="button is-fullwidth">Sign Up</button>
+              <button type="submit" 
+                onClick={handleSubmit}
+                className="button is-fullwidth">
+                Sign Up</button>
             </div>
           </form>
         </div>

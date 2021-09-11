@@ -123,6 +123,11 @@ body {
       font-family: 'interstate', sans-serif; 
       padding: 25px;
     }
+
+    .button.is-fullwidth.login {
+      background: $blue;
+    }
+    
   }
 
   .input {
