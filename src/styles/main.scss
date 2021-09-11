@@ -109,7 +109,34 @@ body {
     margin: 0 0 0.9em;
   }
 
-  
+  // form styles
+
+  form {
+    .label {
+      color: $black;
+      font-weight: 400;
+    }
+    .button.is-fullwidth {
+      background: $orange;
+      color: $black;
+      border: none;
+      font-family: 'interstate', sans-serif; 
+      padding: 25px;
+    }
+  }
+
+  .input {
+    border-radius: 0;
+  }
+
+  // other content styles
+
+  .box {
+    color: $black;
+    box-shadow: none;
+    background: none;
+  }
+
 
 }
 
