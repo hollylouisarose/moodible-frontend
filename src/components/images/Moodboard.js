@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+// todo: 
+// add function to randomly select only 5 images from the data
+// possibly needs to be called in the useEffect and defined outside of function
+
 function Moodboard(){
   const [images, setImages] = React.useState('')
 

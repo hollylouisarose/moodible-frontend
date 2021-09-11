@@ -62,6 +62,26 @@ body {
     text-decoration: none;
   }
 
+  // navbar styles
+
+  .navbar {
+    background: none;
+    color: $black
+  }
+
+  .navbar-menu {
+    box-shadow: none;
+    background: none;
+  }
+
+  .navbar-item{
+    .buttons{
+      a {
+        padding-right: 10px;
+      }
+    }
+  }
+
   // footer styles
 
   .footer {
@@ -76,7 +96,7 @@ body {
     }
   }
 
-  }
+  // image grid styles
 
   .masonry {
     margin: 1.5em auto;
@@ -88,7 +108,11 @@ body {
     padding: 0.8em;
     margin: 0 0 0.9em;
   }
+
   
+
+}
+
   // media queries
 
   @media only screen and (min-width: 1024px) {

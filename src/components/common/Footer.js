@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom'
+
 function Footer(){
   return (
     <footer className="footer">
       <div className="container has-text-centered">
         <div className="links">
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
-          <a href="/about">About</a>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Register</Link>
+          <Link to="/about">About</Link>
         </div>
         <p> 
             Made by <a href="https://github.com/hollylouisarose">

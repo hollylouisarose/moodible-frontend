@@ -5,9 +5,10 @@ import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 import Home from './components/common/Home'
 
-import Register from './components/auth/Register'
+import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
 import UserProfile from './components/user/UserProfile'
+import About from './components/common/About'
 
 import Moodboard from './components/images/Moodboard'
 
@@ -26,8 +27,17 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
         <Route path="/moodboard">
           <Moodboard />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
         <Route path="notes/new">
           <NoteNew />
@@ -40,12 +50,6 @@ function App() {
         </Route>
         <Route path="/notes">
           <NotesIndex />
-        </Route>
-        <Route path="/signup" >
-          <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
         </Route>
         <Route path="/:userId">
           <UserProfile />
