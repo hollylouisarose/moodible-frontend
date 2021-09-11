@@ -1,65 +1,67 @@
 import React from 'react'
-import axios from 'axios'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Navbar from './components/common/Navbar'
+import Footer from './components/common/Footer'
+import Home from './components/common/Home'
+
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
+import UserProfile from './components/user/UserProfile'
+
+import Moodboard from './components/images/Moodboard'
+
+import NotesIndex from './components/notes/NotesIndex'
+import NoteShow from './components/notes/NoteShow'
+import NoteNew from './components/notes/NoteNew'
+import NoteEdit from './components/notes/NoteEdit'
 
 function App() {
 
-  const [images, setImages] = React.useState('')
-  const [formData, setFormData] = React.useState({
-    mood: ''
-  })
-
-  React.useEffect(() => {
-
-    const getData = async () => {
-      try {
-        const res = await axios.get('/api/images')
-        setImages(res.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    getData()
-
-  }, [])
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const filteredImages = () => {
-    return images.filter(image => {
-      return image.mood.choice.toLowerCase().includes(formData.mood.toLowerCase())
-    })
-  }
-
-  console.log(images)
-
   return (
-    <>
-      <div className="field">
-        <label className="label">Filter by Mood</label> 
-        <select 
-          name="mood"
-          onChange={handleChange}
-          value={formData.size}
-        >
-          <option value=""> Select an option</option>
-          <option value="calm"> Calm</option>
-          <option value="adventurous"> Adventurous</option>
-          <option value="playful"> Playful</option>
-        </select>
-      </div>
-      <h2>test</h2>
-      {images &&
-        filteredImages().map(image => (
-          <div key={image.id}>
-            <img  src={image.source} />
-            <p> {image.mood.choice}</p>
-          </div>
-        ))}
-    </>
-  ) 
+
+    <BrowserRouter>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/moodboard">
+          <Moodboard />
+        </Route>
+        <Route path="notes/new">
+          <NoteNew />
+        </Route>
+        <Route path="/notes/:noteId/edit">
+          <NoteEdit />
+        </Route>
+        <Route path="/notes/:noteId">
+          <NoteShow />
+        </Route>
+        <Route path="/notes">
+          <NotesIndex />
+        </Route>
+        <Route path="/signup" >
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/:userId">
+          <UserProfile />
+        </Route>
+      </Switch>
+      <Footer />
+    </BrowserRouter>
+
+  )
+
+
+
+  
+
+
+  
 }
 
 export default App
