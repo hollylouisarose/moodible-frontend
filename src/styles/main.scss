@@ -28,7 +28,7 @@ body {
   color: $black;
 
   h1, h2, h3, h4, h5 {
-    font-family: 'kansasnew', serif; 
+    font-family: 'interstate', sans-serif; 
     font-weight: 600;
     line-height: 1.2;
   }
@@ -78,6 +78,40 @@ body {
 
   }
 
+  .masonry {
+    margin: 1.5em auto;
+    max-width: 800px;
+    column-gap: 1.5em;
+  }
+  
+  .masonry-item {
+    padding: 0.8em;
+    margin: 0 0 0.9em;
+  }
+  
+  // media queries
 
+  @media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+  @media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+  @media only screen and (max-width: 767px) and (min-width: 540px) {
+  .masonry {
+    column-count: 1;
+  }
+
+  .masonry-item {
+    padding: 0;
+    margin: 0;
+  }
+}
 
 

@@ -32,8 +32,6 @@ function ImageIndex(){
     })
   }
 
-  console.log(images)
-
   return (
     <>
       <div className="field">
