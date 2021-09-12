@@ -1,14 +1,30 @@
 import React from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router'
+
+import { setToken } from '../../lib/auth'
 
 function Login(){
+  const history = useHistory()
+  const [formData, setFormData] = React.useState({
+    username: '',
+    password: '',
+  })
+
 
   const handleChange = (e) => {
-    console.log('value', e.target.value, 'name', e.target.name)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('submitted')
+    try {
+      const response = await axios.post('/api/auth/login/', formData)
+      setToken(response.data.token)
+      history.push('/:userId')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -17,6 +33,7 @@ function Login(){
         <div className="columns">
           <form
             className="column is-half is-offset-one-quarter box"
+            onSubmit={handleSubmit}
           >
             <h3 className="has-text-centered">Log in</h3>
             <div className="field">
@@ -45,7 +62,6 @@ function Login(){
             <div className="field">
               <button 
                 type="submit" 
-                onClick={handleSubmit}
                 className="button is-fullwidth login">
                 Login</button>
             </div>
