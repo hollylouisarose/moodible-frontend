@@ -1,15 +1,30 @@
 import React from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router'
 
 function Register(){
 
+  const history = useHistory()
+  const [formData, setFormData] = React.useState({
+    username: '',
+    firstname: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  })
 
   const handleChange = (e) => {
-    console.log('value', e.target.value, 'name', e.target.name)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('submitted')
+    try {
+      await axios.post('/api/auth/register/', formData)
+      history.push('/login')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -18,6 +33,7 @@ function Register(){
         <div className="columns">
           <form
             className="column is-half is-offset-one-quarter box"
+            onSubmit={handleSubmit}
           >
             <h3 className="has-text-centered">Lets get started</h3>
             <p className="has-text-centered">Sign up for an account</p>
@@ -80,7 +96,6 @@ function Register(){
             </div>
             <div className="field">
               <button type="submit" 
-                onClick={handleSubmit}
                 className="button is-fullwidth">
                 Sign Up</button>
             </div>
