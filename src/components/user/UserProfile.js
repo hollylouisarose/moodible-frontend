@@ -31,9 +31,15 @@ function UserProfile(){
         <Link to="/moodboard"> Moodboard</Link>
       </div>
       }
-      { user && user.likedImages.map(image => {
-        return <img key={image.id} src={image.source}/>
-      })}
+      <div className="columns is-multiline">
+        { user && user.likedImages.map(image => {
+          return (
+            <div key={image.id} className="column is-one-quarter-desktop is-one-third-tablet">
+              <img src={image.source}/>
+            </div>
+          )
+        })}
+      </div> 
     </section>
   )
 
