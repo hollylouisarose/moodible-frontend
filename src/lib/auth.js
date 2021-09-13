@@ -31,3 +31,9 @@ export function isOwner(userId) {
   return payload.sub === userId
 }
 
+export function getUserId(){
+  const payload = getPayload()
+  if (!payload) return false
+  const userId = payload.sub
+  return userId
+}

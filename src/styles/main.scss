@@ -107,6 +107,7 @@ body {
   .masonry-item {
     padding: 0.8em;
     margin: 0 0 0.9em;
+    position: relative;
   }
 
   // form styles
@@ -140,6 +141,11 @@ body {
     color: $black;
     box-shadow: none;
     background: none;
+  }
+
+  .favourite-button {
+    position: absolute;
+    z-index: 2;
   }
 
 

@@ -11,6 +11,7 @@ import UserProfile from './components/user/UserProfile'
 import About from './components/common/About'
 
 import Moodboard from './components/images/Moodboard'
+import ImageShow from './components/images/ImageShow'
 
 import NotesIndex from './components/notes/NotesIndex'
 import NoteShow from './components/notes/NoteShow'
@@ -26,6 +27,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/images/:imageId">
+          <ImageShow />
         </Route>
         <Route path="/login">
           <Login />

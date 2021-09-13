@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import MoodboardCard from './MoodboardCard'
 
 // todo: 
 // add function to randomly select only 5 images from the data
@@ -30,15 +31,12 @@ function Moodboard(){
   }
 
   return (
-    <div className="container">  
-      <div className="masonry">
-        {images &&
+
+    <div className="masonry">
+      {images &&
         filteredImages().map(image => (
-          <div className="masonry-item" key={image.id}>
-            <img src={image.source} />
-          </div>
+          <MoodboardCard key={image.id} image={image} />
         ))}
-      </div>
     </div>
   ) 
 

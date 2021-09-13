@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router'
 
 import { setToken } from '../../lib/auth'
-import { getPayload } from '../../lib/auth'
+import { getUserId } from '../../lib/auth'
 
 
 function Login(){
@@ -15,13 +15,6 @@ function Login(){
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const getUserId = () => {
-    const payload = getPayload()
-    if (!payload) return false
-    const userId = payload.sub
-    return userId
   }
 
   const handleSubmit = async (e) => {
