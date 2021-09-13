@@ -1,8 +1,66 @@
+import React from 'react'
+import axios from 'axios'
+import { useParams, useHistory } from 'react-router-dom'
+import { getUserId } from '../../lib/auth'
+import { getHeaders } from '../../lib/api'
+
+
 function NoteShow(){
+  const history = useHistory()
+  const [note, setNote] = React.useState([])
+  const { noteId }  = useParams()
+  const userId = getUserId()
+  
+
+  React.useEffect(() => {
+
+    const getData = async() => {
+
+      try {
+        const response = await axios.get(`/api/images/${userId}/notes/${noteId}/`, getHeaders() ) 
+        setNote(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
+    getData()
+
+  }, [])
+
+  const handleDelete = async () => {
+    await axios.delete(`/api/images/${userId}/notes/${noteId}/`, getHeaders())
+    history.push(`/${userId}/notes`)
+  }
 
 
-  return <h2>Note show</h2>
+  return (
+    <section className="section">
+      <div className="container">
+        {note && 
+        <>
+          <div key={note.id}>
+            <h4>{note.title}</h4>
+            <p>{note.text}</p>
+          </div>
+          <button className="button">Edit</button>
+          <button 
+            className="button"
+            onClick={handleDelete}
+          >Delete</button>
+        </>
+        }
+        
+
+      </div>
+
+    </section>
+  )
 
 }
+
+
+
 
 export default NoteShow

@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { getHeaders } from '../../lib/api'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 
 
 function UserProfile(){
+  const history = useHistory()
   const [user, setUser] = React.useState('')
   const [likedImages, setLikedImages] = React.useState([])
   const userId = useParams()
@@ -22,7 +23,7 @@ function UserProfile(){
     }
 
     getData()
-  }, [likedImages]) 
+  }, [userId]) 
 
   const handleRemove = async (e) => {
     const imageId = e.target.value
@@ -41,15 +42,17 @@ function UserProfile(){
     }
   }
 
-
-
-
-
   return (
     <section key={user.id} className="section">
       {user && 
       <div>
-        <h3 className="has-text-centered">Welcome back, {user.username}</h3>
+        <div className="profile-header">
+          <div>
+            <h3>Welcome back, {user.username}</h3>
+            <img className="profile-image" src={user.profileImage}/>
+          </div>
+          <button className="button">Edit profile </button>
+        </div>
         <div className="navbar" role="navigation" aria-label="user navigation">
           <div className="navbar-brand">
             <div className="navbar-item ">

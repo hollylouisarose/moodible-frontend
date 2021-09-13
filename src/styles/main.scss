@@ -135,6 +135,26 @@ body {
     border-radius: 0;
   }
 
+  // user profile styles
+
+  .profile-header {
+    div {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      img {
+        padding-right: 0.2rem;
+      }
+    }
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img.profile-image {
+    height: 64px;
+  }
+
   // other content styles
 
   .box {
