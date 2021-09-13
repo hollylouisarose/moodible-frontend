@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { getUserId } from '../../lib/auth'
 import { getHeaders } from '../../lib/api'
 
@@ -44,10 +44,13 @@ function NoteShow(){
             <h4>{note.title}</h4>
             <p>{note.text}</p>
           </div>
-          <button className="button">Edit</button>
+          <button className="button">
+            <Link to={`/notes/${noteId}/edit`}>
+            Edit</Link>
+          </button>
           <button 
-            className="button"
             onClick={handleDelete}
+            className="button"
           >Delete</button>
         </>
         }
