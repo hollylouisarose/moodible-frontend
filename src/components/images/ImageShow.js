@@ -29,9 +29,9 @@ function ImageShow(){
     if (!image.likedBy.includes(userId)){
       image.likedBy.push(userId)
     }
-    console.log('after like', image)
+
     try {
-      await axios.post(`/api/images/${userId}/like/`, image, getHeaders())
+      await axios.post(`/api/images/${imageId}/like/`, image, getHeaders())
       history.push('/moodboard')
     } catch (error) {
       console.log(error)

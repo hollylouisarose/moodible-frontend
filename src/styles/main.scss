@@ -98,7 +98,7 @@ body {
 
   // image grid styles
 
-  .masonry {
+  .masonry, .grid {
     margin: 1.5em auto;
     max-width: 800px;
     column-gap: 1.5em;
@@ -109,6 +109,11 @@ body {
     margin: 0 0 0.9em;
     position: relative;
   }
+
+  .grid-item {
+    padding: 0.8em
+  }
+
 
   // form styles
 

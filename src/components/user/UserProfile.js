@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { getHeaders } from '../../lib/api'
+import { Link } from 'react-router-dom'
 
 function UserProfile(){
 
@@ -20,9 +21,21 @@ function UserProfile(){
     getData()
   }, []) 
 
-  console.log('user profile info', user)
+  console.log(user)
 
-  return <h2>User profile</h2>
+  return (
+    <section key={user.id} className="section">
+      {user && 
+      <div>
+        <h3 className="has-text-centered">Welcome back, {user.username}</h3>
+        <Link to="/moodboard"> Moodboard</Link>
+      </div>
+      }
+      { user && user.likedImages.map(image => {
+        return <img key={image.id} src={image.source}/>
+      })}
+    </section>
+  )
 
 }
 
