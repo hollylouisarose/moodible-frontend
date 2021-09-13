@@ -13,8 +13,9 @@ function Moodboard(){
 
     const getData = async () => {
       try {
-        const res = await axios.get('/api/images')
-        setImages(res.data)
+        const response = await axios.get('/api/images')
+        console.log(response.data)
+        setImages(response.data)
       } catch (error) {
         console.log(error)
       }

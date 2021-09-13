@@ -8,7 +8,7 @@ function MoodboardCard({ image }){
 
     <Link to={`/images/${image.id}`}>
       <div className="masonry-item" key={image.id}>
-        <img className="masonry-image" src={image.source} />
+        <img className="masonry-image" src={image.source}/>
       </div>
     </Link>
   ) 

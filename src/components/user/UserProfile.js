@@ -50,7 +50,15 @@ function UserProfile(){
       {user && 
       <div>
         <h3 className="has-text-centered">Welcome back, {user.username}</h3>
-        <Link to="/moodboard"> Moodboard</Link>
+        <div className="navbar" role="navigation" aria-label="user navigation">
+          <div className="navbar-brand">
+            <div className="navbar-item ">
+              <Link to="/moodboard"> Moodboard</Link>
+              <Link to={`${userId}/notes`}>Your notes</Link>
+            </div>
+          </div>
+          
+        </div>
       </div>
       }
       <div className="columns is-multiline">

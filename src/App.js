@@ -52,7 +52,7 @@ function App() {
         <Route path="/notes/:noteId">
           <NoteShow />
         </Route>
-        <Route path="/notes">
+        <Route path="/:userId/notes">
           <NotesIndex />
         </Route>
         <Route path="/:userId">
