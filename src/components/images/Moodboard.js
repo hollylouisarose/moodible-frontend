@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import MoodboardCard from './MoodboardCard'
+import { useParams } from 'react-router'
 
 // todo: 
 // add function to randomly select only 5 images from the data
@@ -8,6 +9,7 @@ import MoodboardCard from './MoodboardCard'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')
+  const mood = useParams()
 
   React.useEffect(() => {
 
@@ -27,7 +29,7 @@ function Moodboard(){
 
   const filteredImages = () => {
     return images.filter(image => {
-      return image.mood.choice.toLowerCase().includes('adventurous')
+      return image.mood.choice.toLowerCase().includes(mood.moodId)
     })
   }
 

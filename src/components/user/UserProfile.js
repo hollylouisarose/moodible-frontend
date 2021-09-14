@@ -56,7 +56,7 @@ function UserProfile(){
         <div className="navbar" role="navigation" aria-label="user navigation">
           <div className="navbar-brand">
             <div className="navbar-item ">
-              <Link to="/moodboard"> Moodboard</Link>
+              <Link to="/choosemood"> Moodboard</Link>
               <Link to={`/${userId}/notes`}>Your notes</Link>
             </div>
           </div>

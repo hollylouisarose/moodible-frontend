@@ -41,7 +41,7 @@ function App() {
         <Route path="/choosemood">
           <MoodboardChoice />
         </Route>
-        <Route path="/moodboard">
+        <Route path="/moodboard/:moodId">
           <Moodboard />
         </Route>
         <Route path="/about">

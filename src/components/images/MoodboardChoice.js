@@ -1,8 +1,11 @@
-function MoodboardChoice(){
+import { useHistory } from 'react-router-dom'
 
+function MoodboardChoice(){
+  const history = useHistory()
 
   const handleChoice = (e) => {
     console.log(e.target.id)
+    history.push(`/moodboard/${e.target.id}`)
   }
 
   return (
