@@ -11,6 +11,7 @@ import UserProfile from './components/user/UserProfile'
 import About from './components/common/About'
 
 import Moodboard from './components/images/Moodboard'
+import MoodboardChoice from './components/images/MoodboardChoice'
 import ImageShow from './components/images/ImageShow'
 
 import NotesIndex from './components/notes/NotesIndex'
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/images/:imageId">
           <ImageShow />
+        </Route>
+        <Route path="/choosemood">
+          <MoodboardChoice />
         </Route>
         <Route path="/moodboard">
           <Moodboard />
