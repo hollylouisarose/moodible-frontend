@@ -57,7 +57,7 @@ function UserProfile(){
           <div className="navbar-brand">
             <div className="navbar-item ">
               <Link to="/moodboard"> Moodboard</Link>
-              <Link to={`${userId}/notes`}>Your notes</Link>
+              <Link to={`/${userId}/notes`}>Your notes</Link>
             </div>
           </div>
           

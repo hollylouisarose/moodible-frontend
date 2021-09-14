@@ -28,14 +28,14 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/images/:imageId">
-          <ImageShow />
-        </Route>
         <Route path="/login">
           <Login />
         </Route>
         <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/images/:imageId">
+          <ImageShow />
         </Route>
         <Route path="/moodboard">
           <Moodboard />
@@ -43,7 +43,7 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="notes/new">
+        <Route path="/notes/new">
           <NoteNew />
         </Route>
         <Route path="/notes/:noteId/edit">

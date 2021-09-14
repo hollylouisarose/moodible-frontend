@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 function NotesIndex(){
 
   const [notes, setNotes] = React.useState([])
-
   React.useEffect(() => {
 
     const getData = async () => {
@@ -15,7 +14,6 @@ function NotesIndex(){
       try {
         const response = await axios.get('/api/auth/profile', getHeaders())
         setNotes(response.data.notesMade)
-        console.log(response.data)
       } catch (error) {
         console.log(error)
       }
@@ -30,6 +28,7 @@ function NotesIndex(){
     <section className="section">
       <div className="container">
         <h4 className="has-text-centered">Your notes</h4>
+        <Link className="button" to="/notes/new">Add a note</Link>
         {notes && notes.map(note =>{
           return (
             <div key={note.id}>

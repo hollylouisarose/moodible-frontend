@@ -52,6 +52,12 @@ function NoteShow(){
             onClick={handleDelete}
             className="button"
           >Delete</button>
+          <button 
+            className="button">
+            <Link to={`/${userId}/notes`}>
+              Back to notes
+            </Link>
+          </button>
         </>
         }
         
