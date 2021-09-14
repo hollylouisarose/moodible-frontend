@@ -3,16 +3,9 @@ import axios from 'axios'
 import MoodboardCard from './MoodboardCard'
 import { useParams } from 'react-router'
 
-// todo: 
-// filter the images by mood
-// randomly select 5
-// set those 5 into state?
-
-
 function Moodboard(){
   const [images, setImages] = React.useState('')
   const mood = useParams()
-  const [randomFilteredImages, setRandomFilteredImages] = React.useState([])
 
   React.useEffect(() => {
 
@@ -28,46 +21,32 @@ function Moodboard(){
 
   }, [])
 
-
-  const selected = images && images?.filter(image => {
+  const selected = images && images.filter(image => {
     return image.mood.choice.toLowerCase().includes(mood.moodId)
   })
 
-  console.log(selected)
-
-
-  function randomThree() {
-    const nums = new Set()
-    while (selected && nums.size < 5) {
-      nums.add(Math.ceil(Math.random() * selected.length - 1))
+  const randomisedImages = () => {
+    let images = []
+    for (let index = 0; images.length < 5; index++) {
+      const random = selected[Math.floor(Math.random() * selected.length)]
+      if (!images.includes(random)){
+        images.push(random)
+      }
     }
-    console.log(nums)
-    return [...nums]
+    return images
+    
   }
-  const [first, second, third, fourth, fifth] = randomThree()
 
   return (
 
     <>
-      { selected && 
       <div className="masonry">
-        <div className="masonry-item">
-          <img src={selected[first].source}/>
-        </div>
-        <div className="masonry-item">
-          <img src={selected[second].source}/>
-        </div>
-        <div className="masonry-item">
-          <img src={selected[third].source}/>
-        </div>
-        <div className="masonry-item">
-          <img src={selected[fourth].source}/>
-        </div>
-        <div className="masonry-item">
-          <img src={selected[fifth].source}/>
-        </div>
+        {images && randomisedImages().map(image => {
+          return (
+            < MoodboardCard key={image.id} image={image}/>
+          )  
+        })}
       </div>
-      }
     </>
   ) 
 
