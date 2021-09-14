@@ -6,7 +6,7 @@ function Footer(){
       <div className="container has-text-centered">
         <div className="links">
           <Link to="/login">Login</Link>
-          <Link to="/signup">Register</Link>
+          <Link to="/signup">Sign up</Link>
           <Link to="/about">About</Link>
         </div>
         <p> 

@@ -39,15 +39,19 @@ function ImageShow(){
   }
 
   return (
-    <>
-      {image && <div key={image.id}>
-        <button 
-          onClick={handleLike}
-          className="button favourite-button"
-        >Like</button>
-        <img src={image.source} />
-      </div>}
-    </>
+    <section className="section">
+      <div className="container">
+        {image && <div key={image.id}>
+          <button 
+            onClick={handleLike}
+            className="button favourite-button"
+          >Like</button>
+          <figure className="image-single">
+            <img src={image.source} />
+          </figure>
+        </div>}
+      </div>  
+    </section>
   )
 
 
