@@ -25,17 +25,24 @@ function MoodboardCard({ image }){
   return (
     <div className="masonry-item" key={image.id}>
       <>
-        {isLiked ? <img 
-          src={filledheart}
-          id={image.id}
-          alt="like-button"
-          onClick={handleLike} /> :
-          <img 
-            src={outlineheart} 
-            id={image.id}
-            onClick={handleLike}
-            alt="like-button"
-          />}
+        {isLiked ? 
+          <button className="favourite-button button" id={image.id}>
+            <img 
+              src={filledheart}
+              id={image.id}
+              alt="like-button"
+              onClick={handleLike} />
+          </button>
+          :
+          <button className="favourite-button button" id={image.id}>
+            <img 
+              src={outlineheart} 
+              id={image.id}
+              onClick={handleLike}
+              alt="like-button"
+            />
+          </button>
+        }
         <Link to={`/images/${image.id}`}>
           <img className="masonry-image" src={image.source}/>
         </Link>

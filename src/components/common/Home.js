@@ -14,11 +14,6 @@ function Home(){
               <h3>Inspiration without information overwhelm.</h3>
               <p>Mood.ible generates a curated moodboard of five inspiring images, based on your chosen ‘mood’.</p>
               <p>You will never see more than five at a time, this give you time to savour each one, without disappearing down a rabbit hole.</p>
-              <button className=" home button">
-                <Link to="/signup">
-                  Sign Up
-                </Link>
-              </button>
             </div>
             <div className="column is-half">
               <figure>

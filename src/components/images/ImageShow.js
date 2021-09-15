@@ -5,6 +5,7 @@ import { getUserId } from '../../lib/auth'
 import { getSingleImage, favouriteImage } from '../../lib/api'
 import Loading from '../common/Loading'
 import Error from '../common/Error'
+import outlineheart from '../../images/outlineheart.svg'
 
 
 function ImageShow(){
@@ -53,7 +54,8 @@ function ImageShow(){
             <button 
               onClick={handleLike}
               className="button show-favourite"
-            >Like</button>
+              aria-label="like-button"
+            ><img alt="like-image" src={outlineheart} /></button>
             <img src={image.source} />
             <p className="has-text-centered">{image.description}</p>
           </figure>
