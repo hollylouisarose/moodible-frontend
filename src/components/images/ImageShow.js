@@ -48,13 +48,14 @@ function ImageShow(){
       <div className="container">
         {isError && <Error />}
         {isLoading && <Loading />}
-        {image && <div key={image.id}>
-          <button 
-            onClick={handleLike}
-            className="button favourite-button"
-          >Like</button>
+        {image && <div className="image-show" key={image.id}>
           <figure className="image-single">
+            <button 
+              onClick={handleLike}
+              className="button show-favourite"
+            >Like</button>
             <img src={image.source} />
+            <p className="has-text-centered">{image.description}</p>
           </figure>
         </div>}
       </div>  

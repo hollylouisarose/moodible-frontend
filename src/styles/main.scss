@@ -262,6 +262,17 @@ body {
     background-color: $orange;
   }
 
+  figure.image-single {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    .button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  }
+
 }
 
   // media queries
