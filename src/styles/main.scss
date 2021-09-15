@@ -170,9 +170,6 @@ body {
     }
   }
 
-
-
-
   // other content styles
 
   .box {
@@ -180,6 +177,8 @@ body {
     box-shadow: none;
     background: none;
   }
+
+  // buttons
 
   .favourite-button {
     position: absolute;
@@ -189,6 +188,34 @@ body {
   .unfavourite-button {
     position: absolute;
     z-index: 2;
+  }
+
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mood-choice {
+    font-family: interstate;
+    width: 300px;
+    height: 300px;
+    border: none;
+    border-radius: 0;
+    margin: 1rem;
+  }
+
+  button#calm{
+    background-color: $blue;
+  }
+
+  button#playful {
+    background-color: $pink;
+  }
+
+  button#adventurous {
+    background-color: $orange;
   }
 
 }

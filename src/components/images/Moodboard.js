@@ -1,7 +1,7 @@
 import React from 'react'
 import MoodboardCard from './MoodboardCard'
 import { useParams } from 'react-router'
-import { getAllImages, getUserLikedImages } from '../../lib/api'
+import { getAllImages } from '../../lib/api'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')

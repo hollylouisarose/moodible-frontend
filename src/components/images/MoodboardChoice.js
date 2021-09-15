@@ -10,20 +10,20 @@ function MoodboardChoice(){
 
   return (
     <section className="section">
-      <div className="div">
+      <div className="choices">
         <button 
           onClick={handleChoice}
-          className="button"
+          className="button mood-choice"
           id="calm"> Calm
         </button>
         <button 
           onClick={handleChoice}
-          className="button"
+          className="button mood-choice"
           id="playful"> Playful
         </button>
         <button 
           onClick={handleChoice}
-          className="button"
+          className="button mood-choice"
           id="adventurous"> Adventurous
         </button>
 
