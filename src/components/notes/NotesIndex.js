@@ -1,12 +1,21 @@
 import React from 'react'
-import { getAllNotes } from '../../lib/api'
 import { Link } from 'react-router-dom'
+
+import { getAllNotes } from '../../lib/api'
+
 import ProfileNav from '../user/ProfileNav'
+
+import Loading from '../common/Loading'
+import Error from '../common/Error'
+
 
 
 function NotesIndex(){
 
   const [notes, setNotes] = React.useState([])
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !notes && !isError
+
   React.useEffect(() => {
 
     const getData = async () => {
@@ -15,7 +24,7 @@ function NotesIndex(){
         const response = await getAllNotes()
         setNotes(response.data.notesMade)
       } catch (error) {
-        console.log(error)
+        setIsError(true)
       }
 
     }
@@ -30,6 +39,8 @@ function NotesIndex(){
         <h4 className="has-text-centered">Your notes</h4>
         < ProfileNav />
         <Link className="button" to="/notes/new">Add a note</Link>
+        {isError && <Error />}
+        {isLoading && <Loading />}
         {notes && notes.map(note =>{
           return (
             <div key={note.id}>

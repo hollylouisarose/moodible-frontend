@@ -28,7 +28,7 @@ function Register(){
       history.push('/login')
     } catch (error) {
       setFormErrors({ ...formErrors, ...error.response.data })
-  
+      console.log(formErrors)
     }
   }
 
@@ -45,6 +45,8 @@ function Register(){
             <div className="field">
               <label className="label">Username</label>
               <div className="control">
+                {formErrors.username && 
+                (<p className="error-text">{formErrors.username}</p>)}
                 <input
                   className={`input ${formErrors.username ? 'is-danger' : ''}`}
                   placeholder="Username"
@@ -66,6 +68,8 @@ function Register(){
             <div className="field">
               <label className="label">Email</label>
               <div className="control">
+                {formErrors.email && 
+                (<p className="error-text">{formErrors.email}</p>)}
                 <input
                   className={`input ${formErrors.email ? 'is-danger' : ''}`}
                   placeholder="Email Address"
@@ -77,6 +81,8 @@ function Register(){
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
+                {formErrors.password && 
+                (<p className="error-text">{formErrors.password}</p>)}
                 <input
                   type="password"
                   className={`input ${formErrors.password ? 'is-danger' : ''}`}
@@ -89,6 +95,8 @@ function Register(){
             <div className="field">
               <label className="label">Password Confirmation</label>
               <div className="control">
+                {formErrors.passwordConfirmation && 
+                (<p className="error-text">{formErrors.passwordConfirmation}</p>)}
                 <input
                   type="password"
                   className={`input ${formErrors.passwordConfirmation ? 'is-danger' : ''}`}

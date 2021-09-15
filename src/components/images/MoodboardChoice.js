@@ -26,11 +26,7 @@ function MoodboardChoice(){
           className="button mood-choice"
           id="adventurous"> Adventurous
         </button>
-
       </div>
-
-
-
     </section>
 
 

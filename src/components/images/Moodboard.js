@@ -1,11 +1,17 @@
 import React from 'react'
-import MoodboardCard from './MoodboardCard'
+
 import { useParams } from 'react-router'
 import { getAllImages } from '../../lib/api'
+
+import Loading from '../common/Loading'
+import Error from '../common/Error'
+import MoodboardCard from './MoodboardCard'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')
   const mood = useParams()
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !images && !isError
 
   React.useEffect(() => {
 
@@ -14,7 +20,7 @@ function Moodboard(){
         const response = await getAllImages()
         setImages(response.data)
       } catch (error) {
-        console.log(error)
+        setIsError(true)
       }
     }
     getData()
@@ -39,6 +45,8 @@ function Moodboard(){
 
   return (
     <>
+      {isError && <Error />}
+      {isLoading && <Loading />}
       <div className="masonry">
         {images && randomisedImages().map(image => {
           return (

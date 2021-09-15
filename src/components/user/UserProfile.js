@@ -1,7 +1,11 @@
 import React from 'react'
-import { getUserProfile, getUserLikedImages } from '../../lib/api'
 import { useParams, useHistory } from 'react-router-dom'
+
+import { getUserProfile, getUserLikedImages } from '../../lib/api'
+
 import ProfileNav from './ProfileNav'
+import Loading from '../common/Loading'
+import Error from '../common/Error'
 
 
 function UserProfile(){
@@ -9,6 +13,9 @@ function UserProfile(){
   const [user, setUser] = React.useState('')
   const [likedImages, setLikedImages] = React.useState([])
   const userId = useParams()
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !user && !isError
+  
 
   React.useEffect(() => {
 
@@ -18,7 +25,7 @@ function UserProfile(){
         setUser(response.data)
         setLikedImages(response.data.likedImages)
       } catch (error) {
-        console.log(error)
+        setIsError(true)
       }
     }
 
@@ -43,6 +50,8 @@ function UserProfile(){
 
   return (
     <section key={user.id} className="section">
+      {isError && <Error />}
+      {isLoading && <Loading />}
       {user && 
       <div>
         <div className="profile-header">
@@ -53,7 +62,6 @@ function UserProfile(){
           <button className="button">Edit profile </button>
         </div>
         <ProfileNav key={user.id} user={user} />
-
       </div>
       }
       <div className="columns is-multiline">

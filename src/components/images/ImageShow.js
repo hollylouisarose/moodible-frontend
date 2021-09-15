@@ -3,11 +3,16 @@ import { useParams , useHistory } from 'react-router-dom'
 
 import { getUserId } from '../../lib/auth'
 import { getSingleImage, favouriteImage } from '../../lib/api'
+import Loading from '../common/Loading'
+import Error from '../common/Error'
+
 
 function ImageShow(){
   const history = useHistory()
   const { imageId } = useParams()
   const [image, setImage] = React.useState(null)
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !image && !isError
 
   React.useEffect(() => {
     const getData = async () => {
@@ -16,6 +21,7 @@ function ImageShow(){
         setImage(response.data)
       } catch (error) {
         console.log(error)
+        setIsError(true)
       }
     }
     getData()
@@ -40,6 +46,8 @@ function ImageShow(){
   return (
     <section className="section">
       <div className="container">
+        {isError && <Error />}
+        {isLoading && <Loading />}
         {image && <div key={image.id}>
           <button 
             onClick={handleLike}
