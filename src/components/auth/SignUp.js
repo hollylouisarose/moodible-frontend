@@ -2,19 +2,23 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import { signUp } from '../../lib/api'
 
+const initialState = {
+  username: '',
+  firstname: '',
+  email: '',
+  password: '',
+  passwordConfirmation: '',
+}
+
 function Register(){
 
   const history = useHistory()
-  const [formData, setFormData] = React.useState({
-    username: '',
-    firstname: '',
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-  })
+  const [formData, setFormData] = React.useState(initialState)
+  const [formErrors, setFormErrors] = React.useState(initialState)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
 
   const handleSubmit = async (e) => {
@@ -23,7 +27,8 @@ function Register(){
       await signUp(formData)
       history.push('/login')
     } catch (error) {
-      console.log(error)
+      setFormErrors({ ...formErrors, ...error.response.data })
+  
     }
   }
 
@@ -41,7 +46,7 @@ function Register(){
               <label className="label">Username</label>
               <div className="control">
                 <input
-                  className="input"
+                  className={`input ${formErrors.username ? 'is-danger' : ''}`}
                   placeholder="Username"
                   name="username"
                   onChange={handleChange}
@@ -51,10 +56,9 @@ function Register(){
             <div className="field">
               <label className="label">First name</label>
               <div className="control">
-                <input
-                  className="input"
+                <input className="input"
                   placeholder="Your first name"
-                  name="username"
+                  name="firstname"
                   onChange={handleChange}
                 />
               </div>
@@ -63,7 +67,7 @@ function Register(){
               <label className="label">Email</label>
               <div className="control">
                 <input
-                  className="input"
+                  className={`input ${formErrors.email ? 'is-danger' : ''}`}
                   placeholder="Email Address"
                   name="email"
                   onChange={handleChange}
@@ -75,7 +79,7 @@ function Register(){
               <div className="control">
                 <input
                   type="password"
-                  className="input"
+                  className={`input ${formErrors.password ? 'is-danger' : ''}`}
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}
@@ -87,7 +91,7 @@ function Register(){
               <div className="control">
                 <input
                   type="password"
-                  className="input"
+                  className={`input ${formErrors.passwordConfirmation ? 'is-danger' : ''}`}
                   placeholder="Password Confirmation"
                   name="passwordConfirmation"
                   onChange={handleChange}

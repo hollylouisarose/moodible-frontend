@@ -11,9 +11,11 @@ function Login(){
     username: '',
     password: '',
   })
+  const [isError, setIsError] = React.useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setIsError(false)
   }
 
   const handleSubmit = async (e) => {
@@ -24,7 +26,7 @@ function Login(){
       const userId = getUserId()
       history.push(`/${userId}`)
     } catch (error) {
-      console.log(error)
+      setIsError(true)
     }
   }
 
@@ -61,6 +63,9 @@ function Login(){
               </div>
             </div>
             <div className="field">
+              {isError && 
+              <p className="has-text-centered error">
+                Oops! Incorrect login details</p>}
               <button 
                 type="submit" 
                 className="button is-fullwidth login">
