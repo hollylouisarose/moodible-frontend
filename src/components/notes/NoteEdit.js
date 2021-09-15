@@ -35,7 +35,7 @@ function NoteEdit(){
     }
     getData()
 
-  }, [noteId, userId])
+  }, [setFormData])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
