@@ -1,6 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { getHeaders } from '../../lib/api'
+import { getUserProfile, getUserLikedImages } from '../../lib/api'
 import { useParams, useHistory } from 'react-router-dom'
 import ProfileNav from './ProfileNav'
 
@@ -17,7 +16,7 @@ function UserProfile(){
 
     const getData = async () => {
       try {
-        const response = await axios.get('/api/auth/profile', getHeaders())
+        const response = await getUserProfile()
         setUser(response.data)
         setLikedImages(response.data.likedImages)
       } catch (error) {
@@ -37,7 +36,7 @@ function UserProfile(){
     setLikedImages(updatedImages)
 
     try {
-      const response = await axios.post(`/api/images/${imageId}/like/`, likedImages, getHeaders())
+      const response = await getUserLikedImages(imageId, likedImages)
       console.log(response.data)
       history.push(`/${userId}`)
     } catch (error) {

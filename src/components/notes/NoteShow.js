@@ -1,8 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import { getUserId } from '../../lib/auth'
-import { getHeaders } from '../../lib/api'
+import { deleteNote, getSingleNote } from '../../lib/api'
 
 
 function NoteShow(){
@@ -17,7 +16,7 @@ function NoteShow(){
     const getData = async() => {
 
       try {
-        const response = await axios.get(`/api/images/${userId}/notes/${noteId}/`, getHeaders() ) 
+        const response = await getSingleNote(userId, noteId)
         setNote(response.data)
       } catch (error) {
         console.log(error)
@@ -27,10 +26,10 @@ function NoteShow(){
 
     getData()
 
-  }, [])
+  }, [userId, noteId])
 
   const handleDelete = async () => {
-    await axios.delete(`/api/images/${userId}/notes/${noteId}/`, getHeaders())
+    await deleteNote(userId, noteId)
     history.push(`/${userId}/notes`)
   }
 
@@ -60,16 +59,10 @@ function NoteShow(){
           </button>
         </>
         }
-        
-
       </div>
-
     </section>
   )
 
 }
-
-
-
 
 export default NoteShow

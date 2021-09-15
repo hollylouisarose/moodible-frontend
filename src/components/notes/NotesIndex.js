@@ -1,6 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { getHeaders } from '../../lib/api'
+import { getAllNotes } from '../../lib/api'
 import { Link } from 'react-router-dom'
 
 
@@ -12,7 +11,7 @@ function NotesIndex(){
     const getData = async () => {
 
       try {
-        const response = await axios.get('/api/auth/profile', getHeaders())
+        const response = await getAllNotes()
         setNotes(response.data.notesMade)
       } catch (error) {
         console.log(error)

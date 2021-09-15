@@ -1,9 +1,8 @@
 import React from 'react'
-import axios from 'axios'
 import { useHistory } from 'react-router'
 
-import { setToken } from '../../lib/auth'
-import { getUserId } from '../../lib/auth'
+import { setToken, getUserId } from '../../lib/auth'
+import { logIn } from '../../lib/api'
 
 
 function Login(){
@@ -20,10 +19,9 @@ function Login(){
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post('/api/auth/login/', formData)
+      const response = await logIn(formData)
       setToken(response.data.token)
       const userId = getUserId()
-      console.log('the user', userId)
       history.push(`/${userId}`)
     } catch (error) {
       console.log(error)

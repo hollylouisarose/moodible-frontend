@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import { getAllImages } from '../../lib/api'
 
 function ImageIndex(){
   const [images, setImages] = React.useState('')
@@ -11,7 +11,7 @@ function ImageIndex(){
 
     const getData = async () => {
       try {
-        const res = await axios.get('/api/images')
+        const res = await getAllImages()
         setImages(res.data)
       } catch (error) {
         console.log(error)

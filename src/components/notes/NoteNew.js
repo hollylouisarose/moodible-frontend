@@ -1,7 +1,6 @@
 import React from 'react'
-import axios from 'axios'
 import { getUserId } from '../../lib/auth'
-import { getHeaders } from '../../lib/api'
+import { addNote } from '../../lib/api'
 import { useHistory } from 'react-router'
 
 const intialState = {
@@ -22,7 +21,7 @@ function NoteNew(){
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(`/api/images/${userId}/notes/`, formData, getHeaders())
+      const response = await addNote(userId, formData)
       history.push(`/notes/${response.data.id}`)
     } catch (error) {
       console.log(error)

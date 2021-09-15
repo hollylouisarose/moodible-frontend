@@ -1,9 +1,8 @@
 import React from 'react'
 import { useParams , useHistory } from 'react-router-dom'
-import axios from 'axios'
 
 import { getUserId } from '../../lib/auth'
-import { getHeaders } from '../../lib/api'
+import { getSingleImage, favouriteImage } from '../../lib/api'
 
 function ImageShow(){
   const history = useHistory()
@@ -13,7 +12,7 @@ function ImageShow(){
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`/api/images/${imageId}`)
+        const response = await getSingleImage(imageId)
         setImage(response.data)
       } catch (error) {
         console.log(error)
@@ -22,7 +21,7 @@ function ImageShow(){
     getData()
   }, [imageId])
 
-  console.log('before like', image)
+  console.log()
 
   const handleLike = async () => {
     const userId = getUserId()
@@ -31,8 +30,8 @@ function ImageShow(){
     }
 
     try {
-      await axios.post(`/api/images/${imageId}/like/`, image, getHeaders())
-      history.push('/moodboard')
+      await favouriteImage(imageId, image)
+      history.push(`/moodboard/${image.mood.choice.toLowerCase()}`)
     } catch (error) {
       console.log(error)
     }

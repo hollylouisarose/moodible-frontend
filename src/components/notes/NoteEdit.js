@@ -1,6 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { getHeaders } from '../../lib/api'
+import { getSingleNote, editNote } from '../../lib/api'
 import { useParams, useHistory } from 'react-router'
 import { getUserId } from '../../lib/auth'
 
@@ -20,7 +19,7 @@ function NoteEdit(){
     const getData = async() => {
 
       try {
-        const response = await axios.get(`/api/images/${userId}/notes/${noteId}/`, getHeaders() ) 
+        const response = await getSingleNote(userId, noteId) 
         setFormData(response.data)
       } catch (error) {
         console.log(error)
@@ -39,7 +38,7 @@ function NoteEdit(){
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.put(`/api/images/${userId}/notes/${noteId}/`, formData, getHeaders())
+      await editNote(userId, noteId, formData)
       history.push(`/notes/${noteId}`)
     } catch (error) {
       console.log(error)

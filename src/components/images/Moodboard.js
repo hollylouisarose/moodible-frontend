@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import MoodboardCard from './MoodboardCard'
 import { useParams } from 'react-router'
+import { getAllImages } from '../../lib/api'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')
@@ -11,7 +11,7 @@ function Moodboard(){
 
     const getData = async () => {
       try {
-        const response = await axios.get('/api/images')
+        const response = await getAllImages()
         setImages(response.data)
       } catch (error) {
         console.log(error)
@@ -26,7 +26,7 @@ function Moodboard(){
   })
 
   const randomisedImages = () => {
-    let images = []
+    const images = []
     for (let index = 0; images.length < 5; index++) {
       const random = selected[Math.floor(Math.random() * selected.length)]
       if (!images.includes(random)){
