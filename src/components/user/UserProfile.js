@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { getHeaders } from '../../lib/api'
-import { Link, useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
+import ProfileNav from './ProfileNav'
 
 
 function UserProfile(){
@@ -9,6 +10,8 @@ function UserProfile(){
   const [user, setUser] = React.useState('')
   const [likedImages, setLikedImages] = React.useState([])
   const userId = useParams()
+
+  console.log(userId)
 
   React.useEffect(() => {
 
@@ -47,21 +50,14 @@ function UserProfile(){
       {user && 
       <div>
         <div className="profile-header">
-          <div>
-            <h3>Welcome back, {user.username}</h3>
+          <div className="profile-icons">
+            <h4>Welcome back, {user.username}</h4>
             <img className="profile-image" src={user.profileImage}/>
           </div>
           <button className="button">Edit profile </button>
         </div>
-        <div className="navbar" role="navigation" aria-label="user navigation">
-          <div className="navbar-brand">
-            <div className="navbar-item ">
-              <Link to="/choosemood"> Moodboard</Link>
-              <Link to={`/${userId}/notes`}>Your notes</Link>
-            </div>
-          </div>
-          
-        </div>
+        <ProfileNav key={user.id} user={user} />
+
       </div>
       }
       <div className="columns is-multiline">
