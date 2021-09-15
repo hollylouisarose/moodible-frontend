@@ -1,22 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import { getUserLikedImages } from '../../lib/api'
+
+import outlineheart from '../../images/outlineheart.svg'
+import filledheart from '../../images/filledheart.svg'
 
 function MoodboardCard({ image }){
 
   const [likedImages, setLikedImages] = React.useState([])
   const [isLiked, setIsLiked] = React.useState(false)
-  const button = document.querySelector('.favourite-button')
 
   const handleLike = async (e) => {
-    const images = []
     const imageId = e.target.id
-    images.push(imageId)
-    setLikedImages(images)
+    setLikedImages(e.target.id)
+    setIsLiked(true)
     try {
       await getUserLikedImages(imageId, likedImages)
-      setIsLiked(true)
-      console.log('is liked', isLiked)
     } catch (error) {
       console.log(error)
     }
@@ -25,10 +25,17 @@ function MoodboardCard({ image }){
   return (
     <div className="masonry-item" key={image.id}>
       <>
-        <button className="button favourite-button"
+        {isLiked ? <img 
+          src={filledheart}
           id={image.id}
-          onClick={handleLike}
-        >{!isLiked ? 'Like' : 'Liked' }</button>
+          alt="like-button"
+          onClick={handleLike} /> :
+          <img 
+            src={outlineheart} 
+            id={image.id}
+            onClick={handleLike}
+            alt="like-button"
+          />}
         <Link to={`/images/${image.id}`}>
           <img className="masonry-image" src={image.source}/>
         </Link>

@@ -8,35 +8,41 @@ function Home(){
   return (
     <section className="section">
       <div className="content">
-        <div>
-          <div>
-            <h3>Inspiration without information overwhelm.</h3>
-            <p>Mood.ible generates a curated moodboard of five inspiring images, based on your chosen ‘mood’.</p>
-            <p>You will never see more than five at a time, this give you time to savour each one, without disappearing down a rabbit hole.</p>
+        <div className="hero">
+          <div className="columns">
+            <div className="column is-half">
+              <h3>Inspiration without information overwhelm.</h3>
+              <p>Mood.ible generates a curated moodboard of five inspiring images, based on your chosen ‘mood’.</p>
+              <p>You will never see more than five at a time, this give you time to savour each one, without disappearing down a rabbit hole.</p>
+              <button className=" home button">
+                <Link to="/signup">
+                  Sign Up
+                </Link>
+              </button>
+            </div>
+            <div className="column is-half">
+              <figure>
+                <img src={moodboardimage} />
+              </figure>
+            </div>
           </div>
-          <figure>
-            <img src={moodboardimage} />
-          </figure>
+          <div className="columns">
+            <div className="column is-half">
+              <h3>Ideas strikes at weird times!</h3>
+              <p>Your profile is the perfect place to store your favourite images and write your ideas down, ready for when you need them.</p>
+              <button className=" home button">
+                <Link to="/signup">
+                Sign Up
+                </Link>
+              </button>
+            </div>
+          </div>
+        </div>
 
-          <button className="button">
-            <Link to="/signup">
-              Sign Up
-            </Link>
-          </button>
-        </div>
-        <div>
-          <h3>Ideas strikes at weird times!</h3>
-          <p>Your profile is the perfect place to store your favourite images and write your ideas down, ready for when you need them.</p>
-        </div>
-        <button className="button">
-          <Link to="/signup">
-            Sign Up
-          </Link>
-        </button>
       </div>
       <div className="hero">
-        <h2>More focus, less scrolling</h2>
-        <button className="button">
+        <h3 className="has-text-centered">More focus, less scrolling</h3>
+        <button className="cta-button button">
           <Link to="/signup">
             Sign Up
           </Link>

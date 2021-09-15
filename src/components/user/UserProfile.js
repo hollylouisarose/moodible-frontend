@@ -75,7 +75,7 @@ function UserProfile(){
                 value={image.id}
               >
                 Remove</button>
-              <img src={image.source}/>
+              <img className="user-favourite" src={image.source}/>
             </div>
           )
         })}
