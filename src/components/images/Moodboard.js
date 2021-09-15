@@ -1,7 +1,7 @@
 import React from 'react'
 import MoodboardCard from './MoodboardCard'
 import { useParams } from 'react-router'
-import { getAllImages } from '../../lib/api'
+import { getAllImages, getUserLikedImages } from '../../lib/api'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')
@@ -38,12 +38,11 @@ function Moodboard(){
   }
 
   return (
-
     <>
       <div className="masonry">
         {images && randomisedImages().map(image => {
           return (
-            < MoodboardCard key={image.id} image={image}/>
+            <MoodboardCard key={image.id} image={image} />
           )  
         })}
       </div>
