@@ -1,6 +1,7 @@
 import React from 'react'
 import { getAllNotes } from '../../lib/api'
 import { Link } from 'react-router-dom'
+import ProfileNav from '../user/ProfileNav'
 
 
 function NotesIndex(){
@@ -27,6 +28,7 @@ function NotesIndex(){
     <section className="section">
       <div className="container">
         <h4 className="has-text-centered">Your notes</h4>
+        < ProfileNav />
         <Link className="button" to="/notes/new">Add a note</Link>
         {notes && notes.map(note =>{
           return (

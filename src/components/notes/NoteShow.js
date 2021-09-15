@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import { getUserId } from '../../lib/auth'
 import { deleteNote, getSingleNote } from '../../lib/api'
+import ProfileNav from '../user/ProfileNav'
 
 
 function NoteShow(){
@@ -37,6 +38,7 @@ function NoteShow(){
   return (
     <section className="section">
       <div className="container">
+        <ProfileNav />
         {note && 
         <>
           <div key={note.id}>

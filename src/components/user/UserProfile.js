@@ -10,8 +10,6 @@ function UserProfile(){
   const [likedImages, setLikedImages] = React.useState([])
   const userId = useParams()
 
-  console.log(userId)
-
   React.useEffect(() => {
 
     const getData = async () => {
@@ -36,8 +34,7 @@ function UserProfile(){
     setLikedImages(updatedImages)
 
     try {
-      const response = await getUserLikedImages(imageId, likedImages)
-      console.log(response.data)
+      await getUserLikedImages(imageId, likedImages)
       history.push(`/${userId}`)
     } catch (error) {
       console.log(error)

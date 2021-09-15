@@ -1,10 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { getUserId } from '../../lib/auth'
 
-function UserNav(){
+function ProfileNav(){
 
-
-  const userId = useParams()
-  console.log(userId)
+  const userId = getUserId()
 
   return (
     <div className="navbar user-nav" role="navigation" aria-label="user navigation">
@@ -23,4 +22,4 @@ function UserNav(){
 
 }
 
-export default UserNav
+export default ProfileNav

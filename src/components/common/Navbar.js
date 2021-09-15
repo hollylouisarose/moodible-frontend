@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link, useLocation, useHistory } from 'react-router-dom'
-import { removeToken, isAuthenticated } from '../../lib/auth'
+import { removeToken, isAuthenticated, getUserId } from '../../lib/auth'
 
 function Navbar(){
   const isAuth = isAuthenticated()
   const history = useHistory()
   const [isOpen, setIsOpen] = React.useState(false)
   const { pathname } = useLocation()
+  const userId = getUserId()
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -59,7 +60,7 @@ function Navbar(){
                     <button className="button" onClick={handleLogout}>
                     Logout
                     </button>
-                    <Link to="/:userId">
+                    <Link to={`/${userId}`}>
                       <button className="button">
                       Profile
                       </button>
