@@ -68,14 +68,17 @@ function UserProfile(){
         { user && user.likedImages.map(image => {
           return (
             <div key={image.id} className="column is-one-quarter-desktop is-one-third-tablet">
-              <button 
-                onClick={handleRemove}
-                className="button unfavourite-button" 
-                id={image.source}
-                value={image.id}
-              >
-                Remove</button>
-              <img className="user-favourite" src={image.source}/>
+              <figure className="user-favourite-figure">
+                <button 
+                  onClick={handleRemove}
+                  className="button unfavourite-button" 
+                  id={image.source}
+                  value={image.id}
+                  aria-label="remove"
+                >
+                X </button>
+                <img className="user-favourite" src={image.source}/>
+              </figure>
             </div>
           )
         })}

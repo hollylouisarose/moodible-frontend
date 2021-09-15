@@ -30,11 +30,6 @@ function Home(){
             <div className="column is-half">
               <h3>Ideas strikes at weird times!</h3>
               <p>Your profile is the perfect place to store your favourite images and write your ideas down, ready for when you need them.</p>
-              <button className=" home button">
-                <Link to="/signup">
-                Sign Up
-                </Link>
-              </button>
             </div>
           </div>
         </div>

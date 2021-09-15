@@ -193,6 +193,10 @@ body {
     background: none;
   }
 
+  .user-favourite-figure {
+    position: relative;
+  }
+
   // buttons
 
   .button {
@@ -209,6 +213,8 @@ body {
   .unfavourite-button {
     position: absolute;
     z-index: 2;
+    top: 10px;
+    left: 10px;
   }
 
   .choices {
@@ -242,6 +248,11 @@ body {
 
   button#playful:hover {
     background-color: #e8bcbc;
+  }
+
+  .home.button {
+    font-family: interstate;
+    border: solid 2px $orange;
   }
 
   button#adventurous {
