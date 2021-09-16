@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 import Home from './components/common/Home'
+import SecureRoute from './components/common/SecureRoute'
 
 import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
@@ -36,33 +37,33 @@ function App() {
         <Route path="/signup">
           <SignUp />
         </Route>
-        <Route path="/images/:imageId">
+        <SecureRoute path="/images/:imageId">
           <ImageShow />
-        </Route>
-        <Route path="/choosemood">
+        </SecureRoute>
+        <SecureRoute path="/choosemood">
           <MoodboardChoice />
-        </Route>
-        <Route path="/moodboard/:moodId">
+        </SecureRoute>
+        <SecureRoute path="/moodboard/:moodId">
           <Moodboard />
-        </Route>
+        </SecureRoute>
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/notes/new">
+        <SecureRoute path="/notes/new">
           <NoteNew />
-        </Route>
-        <Route path="/notes/:noteId/edit">
+        </SecureRoute>
+        <SecureRoute path="/notes/:noteId/edit">
           <NoteEdit />
-        </Route>
-        <Route path="/notes/:noteId">
+        </SecureRoute>
+        <SecureRoute path="/notes/:noteId">
           <NoteShow />
-        </Route>
-        <Route path="/:userId/notes">
+        </SecureRoute>
+        <SecureRoute path="/:userId/notes">
           <NotesIndex />
-        </Route>
-        <Route path="/:userId/edit">
+        </SecureRoute>
+        <SecureRoute path="/:userId/edit">
           <EditProfile />
-        </Route>
+        </SecureRoute>
         <Route path="/:userId">
           <UserProfile />
         </Route>
