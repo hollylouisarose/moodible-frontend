@@ -8,6 +8,7 @@ import Home from './components/common/Home'
 import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
 import UserProfile from './components/user/UserProfile'
+import EditProfile from './components/user/EditProfile'
 import About from './components/common/About'
 
 import Moodboard from './components/images/Moodboard'
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route path="/:userId/notes">
           <NotesIndex />
+        </Route>
+        <Route path="/:userId/edit">
+          <EditProfile />
         </Route>
         <Route path="/:userId">
           <UserProfile />

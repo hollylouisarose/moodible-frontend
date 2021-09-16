@@ -52,6 +52,10 @@ export function getUserProfile(){
   return axios.get(`${baseUrl}/auth/profile`, getHeaders())
 }
 
+export function editUserProfile(userId, formData){
+  return axios.put(`${baseUrl}/auth/profile/${userId}/`, formData, getHeaders())
+}
+
 export function getUserLikedImages(imageId, likedImages){
   return axios.post(`${baseUrl}/images/${imageId}/like/`, likedImages, getHeaders())
 }

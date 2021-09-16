@@ -56,7 +56,7 @@ function UserProfile(){
       <div>
         <div className="profile-header">
           <div className="profile-icons">
-            <h4>Welcome back, {user.username}</h4>
+            <h4>Hi there, {user.username}</h4>
             <img className="profile-image" src={user.profileImage}/>
           </div>
           <button className="button">Edit profile </button>

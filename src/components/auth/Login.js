@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 
-import { setToken, getUserId } from '../../lib/auth'
+import { getUserId, setToken } from '../../lib/auth'
 import { logIn } from '../../lib/api'
 
 
