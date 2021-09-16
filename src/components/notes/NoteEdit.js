@@ -35,14 +35,12 @@ function NoteEdit(){
     }
     getData()
 
-  }, [setFormData])
+  }, [])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
-
-  console.log(formData)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -51,6 +49,7 @@ function NoteEdit(){
       history.push(`/notes/${noteId}`)
     } catch (error) {
       setFormErrors({ ...formErrors, ...error.response.data })
+      console.log(formErrors)
     }
   }
 

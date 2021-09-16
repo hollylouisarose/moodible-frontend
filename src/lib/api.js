@@ -39,7 +39,7 @@ export function addNote(userId, formData){
 }
 
 export function editNote(userId, noteId, formData){
-  axios.put(`/api/images/${userId}/notes/${noteId}/`, formData, getHeaders())
+  return axios.put(`/api/images/${userId}/notes/${noteId}/`, formData, getHeaders())
 }
 
 export function deleteNote(userId, noteId){
