@@ -6,6 +6,7 @@ import { getUserId } from '../../lib/auth'
 
 import Loading from '../common/Loading'
 import Error from '../common/Error'
+import { useForm } from '../../hooks/useForm'
 
 const intialState = {
   title: '',
@@ -16,8 +17,7 @@ function NoteEdit(){
   const history = useHistory()
   const { noteId } = useParams()
   const userId = getUserId()
-  const [formData, setFormData] = React.useState(intialState)
-  const [formErrors, setFormErrors] = React.useState(intialState)
+  const { formData, formErrors, setFormErrors, handleChange, setFormData } = useForm(intialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !formData && !isError
   
@@ -37,18 +37,13 @@ function NoteEdit(){
 
   }, [])
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormErrors({ ...formErrors, [e.target.name]: '' })
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       await editNote(userId, noteId, formData)
       history.push(`/notes/${noteId}`)
     } catch (error) {
-      setFormErrors({ ...formErrors, ...error.response.data })
+      setFormErrors(error.response.data)
       console.log(formErrors)
     }
   }
@@ -69,7 +64,7 @@ function NoteEdit(){
                 (<p className="error-text">{formErrors.title}</p>)}
               <div className="control">
                 <input
-                  className="input"
+                  className={`input ${formErrors.title ? 'is-danger' : ''}`}
                   name="title"
                   onChange={handleChange}
                   value={formData.title}
@@ -83,7 +78,7 @@ function NoteEdit(){
               <div className="control">
                 <textarea
                   type="text"
-                  className="textarea"
+                  className={`textarea ${formErrors.text ? 'is-danger' : ''}`}
                   name="text"
                   onChange={handleChange}
                   value={formData.text}

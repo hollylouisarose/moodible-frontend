@@ -3,6 +3,7 @@ import React from 'react'
 import { getUserId } from '../../lib/auth'
 import { addNote } from '../../lib/api'
 import { useHistory } from 'react-router'
+import { useForm } from '../../hooks/useForm'
 
 const initialState = {
   title: '',
@@ -12,14 +13,7 @@ const initialState = {
 function NoteNew(){
   const history = useHistory()
   const userId = getUserId()
-  const [formData, setFormData] = React.useState(initialState)
-  const [formErrors, setFormErrors] = React.useState(initialState)
-
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormErrors({ ...formErrors, [e.target.name]: '' })
-  }
+  const { formData, formErrors, setFormErrors, handleChange } = useForm(initialState)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,7 +21,7 @@ function NoteNew(){
       const response = await addNote(userId, formData)
       history.push(`/notes/${response.data.id}`)
     } catch (error) {
-      setFormErrors({ ...formErrors, ...error.response.data })
+      setFormErrors(error.response.data)
       console.log(formErrors)
     }
   }

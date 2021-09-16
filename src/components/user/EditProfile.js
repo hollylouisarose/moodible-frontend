@@ -5,18 +5,19 @@ import Loading from '../common/Loading'
 import Error from '../common/Error'
 import { getUserProfile, editUserProfile } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+import { useForm } from '../../hooks/useForm'
+import { useHistory } from 'react-router'
 
-const intialState = {
+const initialState = {
   username: '',
   email: '',
   profileImage: '',
 }
 
 function EditProfile(){
-
+  const history = useHistory()
   const userId = getUserId()
-  const [formData, setFormData] = React.useState(intialState)
-  const [formErrors, setFormErrors] = React.useState(intialState)
+  const { formData, formErrors, setFormErrors, setFormData, handleChange } = useForm(initialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !formData && !isError
 
@@ -33,19 +34,15 @@ function EditProfile(){
     }
     getData()
 
-  }, [])
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormErrors({ ...formErrors, [e.target.name]: '' })
-  }
+  }, [setFormData])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       await editUserProfile(userId, formData)
+      history.push(`/${userId}`)
     } catch (error) {
-      setFormErrors({ ...formErrors, ...error.response.data })
+      setFormErrors(error.response.data)
       console.log(formErrors)
     }
 

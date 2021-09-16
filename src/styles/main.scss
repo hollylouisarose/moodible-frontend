@@ -208,7 +208,8 @@ body {
   // buttons
 
   .button {
-    border: none;
+    font-family: $titlefont;
+    border: solid 2px $blue;
   }
 
   .favourite-button {
@@ -216,6 +217,7 @@ body {
     z-index: 2;
     top: 20px;
     left: 20px;
+    border: solid 2px $pink;
   }
 
   .unfavourite-button {
@@ -223,6 +225,7 @@ body {
     z-index: 2;
     top: 10px;
     left: 10px;
+    border: solid 2px $pink;
   }
 
   .choices {
@@ -239,6 +242,7 @@ body {
     height: 300px;
     border-radius: 0;
     margin: 1rem;
+    border: none;
   }
 
   button#calm{

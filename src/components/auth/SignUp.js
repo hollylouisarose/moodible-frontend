@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import { signUp } from '../../lib/api'
+import { useForm } from '../../hooks/useForm'
 
 const initialState = {
   username: '',
@@ -13,13 +14,7 @@ const initialState = {
 function Register(){
 
   const history = useHistory()
-  const [formData, setFormData] = React.useState(initialState)
-  const [formErrors, setFormErrors] = React.useState(initialState)
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormErrors({ ...formErrors, [e.target.name]: '' })
-  }
+  const { formData, formErrors, setFormErrors, handleChange } = useForm(initialState)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,7 +22,7 @@ function Register(){
       await signUp(formData)
       history.push('/login')
     } catch (error) {
-      setFormErrors({ ...formErrors, ...error.response.data })
+      setFormErrors(error.response.data)
       console.log(formErrors)
     }
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 
 import { getUserProfile, getUserLikedImages } from '../../lib/api'
 
@@ -59,7 +59,9 @@ function UserProfile(){
             <h4>Hi there, {user.username}</h4>
             <img className="profile-image" src={user.profileImage}/>
           </div>
-          <button className="button">Edit profile </button>
+          <Link to={`${user.id}/edit`}>
+            <button className="button">Edit profile </button>
+          </Link>
         </div>
         <ProfileNav key={user.id} user={user} />
       </div>
