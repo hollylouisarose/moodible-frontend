@@ -44,14 +44,10 @@ function Navbar(){
                 {!isAuth && (
                   <>
                     <Link to="/signup">
-                      <button className="button">
                     Sign up
-                      </button>
                     </Link>
                     <Link to="/login">
-                      <button className="button">
                       Login
-                      </button>
                     </Link>
                   </>
                 )}
