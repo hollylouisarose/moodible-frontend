@@ -75,8 +75,7 @@ function UserProfile(){
                   id={image.source}
                   value={image.id}
                   aria-label="remove"
-                >
-                X </button>
+                > X </button>
                 <img className="user-favourite" src={image.source}/>
               </figure>
             </div>

@@ -2,14 +2,17 @@ import React from 'react'
 
 import { useParams } from 'react-router'
 import { getAllImages } from '../../lib/api'
+import { getUserId } from '../../lib/auth'
 
 import Loading from '../common/Loading'
 import Error from '../common/Error'
 import MoodboardCard from './MoodboardCard'
+import ProfileNav from '../user/ProfileNav'
 
 function Moodboard(){
   const [images, setImages] = React.useState('')
   const mood = useParams()
+  const userId = getUserId()
   const [isError, setIsError] = React.useState(false)
   const isLoading = !images && !isError
 
@@ -47,6 +50,7 @@ function Moodboard(){
     <>
       {isError && <Error />}
       {isLoading && <Loading />}
+      <ProfileNav key={userId} user={userId} />
       <div className="masonry">
         {images && randomisedImages().map(image => {
           return (
