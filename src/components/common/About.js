@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 function About(){
 
   return (
@@ -12,10 +10,10 @@ function About(){
             <p>At time of writing, I am about to graduate and will be looking for opportunities so if you would like to chat, get in touch:</p>
             <ul>
               <li>
-                <Link to="https://www.linkedin.com/in/hstratton/">Linkedin</Link>
+                <a href="https://www.linkedin.com/in/hstratton/">Linkedin </a>
               </li>
               <li>
-                <Link to="https://github.com/hollylouisarose">GitHub</Link>
+                <a href="https://github.com/hollylouisarose">GitHub</a>
               </li>
               <p>Thanks! Holly 🙂</p>
             </ul>
