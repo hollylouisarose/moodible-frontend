@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams , useHistory } from 'react-router-dom'
+import { useSpring, animated } from 'react-spring'
 
 import { getUserId } from '../../lib/auth'
 import { getSingleImage, favouriteImage } from '../../lib/api'
@@ -14,6 +15,7 @@ function ImageShow(){
   const [image, setImage] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !image && !isError
+  const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
 
   React.useEffect(() => {
     const getData = async () => {
@@ -37,7 +39,8 @@ function ImageShow(){
     }
 
     try {
-      await favouriteImage(imageId, image)
+      const response = await favouriteImage(imageId, image)
+      console.log(response)
       history.push(`/moodboard/${image.mood.choice.toLowerCase()}`)
     } catch (error) {
       console.log(error)
@@ -45,23 +48,29 @@ function ImageShow(){
   }
 
   return (
-    <section className="section">
-      <div className="container">
-        {isError && <Error />}
-        {isLoading && <Loading />}
-        {image && <div className="image-show" key={image.id}>
-          <figure className="image-single">
-            <button 
-              onClick={handleLike}
-              className="button show-favourite"
-              aria-label="like-button"
-            ><img alt="like-image" src={outlineheart} /></button>
-            <img src={image.source} />
-            <p className="has-text-centered">{image.description}</p>
-          </figure>
-        </div>}
-      </div>  
-    </section>
+    <>
+      <section className="section">
+        <div className="container">
+          {isError && <Error />}
+          {isLoading && <Loading />}
+          {image && <div className="image-show" key={image.id}>
+            <animated.div style={props}>
+              <figure className="image-single">
+                <button 
+                  onClick={handleLike}
+                  className="button show-favourite"
+                  aria-label="like-button"
+                >
+                  <img alt="like-image" src={outlineheart} />
+                </button>
+                <img src={image.source} />
+                <p className="has-text-centered">{image.description}</p>
+              </figure>
+            </animated.div>
+          </div>}
+        </div>  
+      </section>
+    </>
   )
 
 

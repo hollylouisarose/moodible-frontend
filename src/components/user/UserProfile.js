@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import { useSpring, animated } from 'react-spring'
 
 import { getUserProfile, getUserLikedImages } from '../../lib/api'
 
@@ -15,6 +16,7 @@ function UserProfile(){
   const userId = useParams()
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
+  const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
   
 
   React.useEffect(() => {
@@ -67,16 +69,18 @@ function UserProfile(){
         { user && user.likedImages.map(image => {
           return (
             <div key={image.id} className="column is-one-quarter-desktop is-one-third-tablet">
-              <figure className="user-favourite-figure">
-                <button 
-                  onClick={handleRemove}
-                  className="button unfavourite-button" 
-                  id={image.source}
-                  value={image.id}
-                  aria-label="remove"
-                > X </button>
-                <img className="user-favourite" src={image.source}/>
-              </figure>
+              <animated.div style={props}>
+                <figure className="user-favourite-figure">
+                  <button 
+                    onClick={handleRemove}
+                    className="button unfavourite-button" 
+                    id={image.source}
+                    value={image.id}
+                    aria-label="remove"
+                  > X </button>
+                  <img className="user-favourite" src={image.source}/>
+                </figure>
+              </animated.div>
             </div>
           )
         })}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSpring, animated } from 'react-spring'
 
 import { getUserLikedImages } from '../../lib/api'
 
@@ -10,6 +11,7 @@ function MoodboardCard({ image }){
 
   const [likedImages, setLikedImages] = React.useState([])
   const [isLiked, setIsLiked] = React.useState(false)
+  const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
 
   const handleLike = async (e) => {
     const imageId = e.target.id
@@ -24,7 +26,7 @@ function MoodboardCard({ image }){
 
   return (
     <div className="masonry-item" key={image.id}>
-      <>
+      <animated.div style={props}>
         {isLiked ? 
           <button className="favourite-button button" id={image.id}>
             <img 
@@ -46,7 +48,7 @@ function MoodboardCard({ image }){
         <Link to={`/images/${image.id}`}>
           <img className="masonry-image" src={image.source}/>
         </Link>
-      </>
+      </animated.div>
     </div>
 
 
