@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { getUserId } from '../../lib/auth'
 
 function ProfileNav(){
-
   const userId = getUserId()
 
   return (
@@ -12,6 +11,7 @@ function ProfileNav(){
           <Link to="/choosemood"> Make a Moodboard</Link>
           <Link to={`/${userId}/notes`}>Your notes</Link>
           <Link to={`/${userId}`}>Your favourites</Link>
+          <Link to={`/${userId}/edit`}>Edit profile</Link>
         </div>
       </div>
     

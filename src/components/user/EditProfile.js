@@ -1,11 +1,10 @@
 import React from 'react'
 
-
 import Loading from '../common/Loading'
 import Error from '../common/Error'
+import ImageUploadField from '../common/ImageUpload'
 import { getUserProfile, editUserProfile } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
-import { useForm } from '../../hooks/useForm'
 import { useHistory } from 'react-router'
 
 const initialState = {
@@ -17,7 +16,8 @@ const initialState = {
 function EditProfile(){
   const history = useHistory()
   const userId = getUserId()
-  const { formData, formErrors, setFormErrors, setFormData, handleChange } = useForm(initialState)
+  const [formData, setFormData] = React.useState(initialState)
+  const [formErrors, setFormErrors] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !formData && !isError
 
@@ -35,6 +35,20 @@ function EditProfile(){
     getData()
 
   }, [setFormData])
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleImageUpload = (imageUrl) => {
+    setFormData({ ...formData, profileImage: imageUrl })
+  }
+
+  const removeImage = () => {
+    setFormData({ ...formData, profileImage: '' })
+    console.log('form data', formData)
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -90,12 +104,16 @@ function EditProfile(){
               {formErrors.profileImage && 
             (<p className="error-text">{formErrors.profileImage}</p>)}
               <div className="control">
-                <input
+                <ImageUploadField
                   className={`input ${formErrors.profileImage ? 'is-danger' : ''}`}
                   name="profileImage"
-                  onChange={handleChange}
+                  onChange={handleImageUpload}
                   value={formData.profileImage}
                 />
+                <div
+                  onClick={removeImage}>
+                  <a>Change Image</a>
+                </div>
               </div>
             </div>
 
