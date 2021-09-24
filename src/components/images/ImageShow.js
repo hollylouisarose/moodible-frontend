@@ -6,13 +6,16 @@ import { getUserId } from '../../lib/auth'
 import { getSingleImage, favouriteImage } from '../../lib/api'
 import Loading from '../common/Loading'
 import Error from '../common/Error'
+
 import outlineheart from '../../images/outlineheart.svg'
+import filledheart from '../../images/filledheart.svg'
 
 
 function ImageShow(){
   const history = useHistory()
   const { imageId } = useParams()
   const [image, setImage] = React.useState(null)
+  const [isLiked, setIsLiked] = React.useState(false)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !image && !isError
   const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
@@ -41,7 +44,10 @@ function ImageShow(){
     try {
       const response = await favouriteImage(imageId, image)
       console.log(response)
-      history.push(`/moodboard/${image.mood.choice.toLowerCase()}`)
+      setIsLiked(true)
+      setTimeout(() => {
+        history.push(`/moodboard/${image.mood.choice.toLowerCase()}`)
+      }, 400)
     } catch (error) {
       console.log(error)
     }
@@ -56,13 +62,24 @@ function ImageShow(){
           {image && <div className="image-show" key={image.id}>
             <animated.div style={props}>
               <figure className="image-single">
-                <button 
-                  onClick={handleLike}
-                  className="button show-favourite"
-                  aria-label="like-button"
-                >
-                  <img alt="like-image" src={outlineheart} />
-                </button>
+                {isLiked ? 
+                  <button className="favourite-button button" id={image.id}>
+                    <img 
+                      src={filledheart}
+                      id={image.id}
+                      alt="like-button"
+                      onClick={handleLike} />
+                  </button>
+                  :
+                  <button className="favourite-button button" id={image.id}>
+                    <img 
+                      src={outlineheart} 
+                      id={image.id}
+                      onClick={handleLike}
+                      alt="like-button"
+                    />
+                  </button>
+                }
                 <img src={image.source} />
                 <p className="has-text-centered">{image.description}</p>
               </figure>
