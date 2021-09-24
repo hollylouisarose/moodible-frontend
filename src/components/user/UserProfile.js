@@ -17,7 +17,6 @@ function UserProfile(){
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
   const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
-  
 
   React.useEffect(() => {
 
