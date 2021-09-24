@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { getToken } from './auth'
-
-const baseUrl = '/api'
+import { baseUrl } from '../config'
 
 export function getHeaders() {
   return {
@@ -12,11 +11,11 @@ export function getHeaders() {
 // * Image Requests
 
 export function getAllImages(){
-  return axios.get(`${baseUrl}/images`)
+  return axios.get(`${baseUrl}/images/`)
 }
 
 export function getSingleImage(imageId){
-  return axios.get(`${baseUrl}/images/${imageId}`)
+  return axios.get(`${baseUrl}/images/${imageId}/`)
 }
 
 export function favouriteImage(imageId, image){
@@ -27,7 +26,7 @@ export function favouriteImage(imageId, image){
 // * Note Requests
 
 export function getAllNotes(){
-  return axios.get(`${baseUrl}/auth/profile`, getHeaders())
+  return axios.get(`${baseUrl}/auth/profile/`, getHeaders())
 }
 
 export function getSingleNote(userId, noteId){
@@ -49,7 +48,7 @@ export function deleteNote(userId, noteId){
 // * User requests
 
 export function getUserProfile(){
-  return axios.get(`${baseUrl}/auth/profile`, getHeaders())
+  return axios.get(`${baseUrl}/auth/profile/`, getHeaders())
 }
 
 export function editUserProfile(userId, formData){

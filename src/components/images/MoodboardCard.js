@@ -50,7 +50,7 @@ function MoodboardCard({ image }){
               />
             </button>
           }
-          <Link to={`/images/${image.id}`}>
+          <Link to={`/images/${image.id}/`}>
             <img className="masonry-image" src={image.source}/>
           </Link>
         </animated.div>
