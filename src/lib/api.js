@@ -19,7 +19,7 @@ export function getSingleImage(imageId){
 }
 
 export function favouriteImage(imageId, image){
-  return axios.post(`/api/images/${imageId}/like/`, image, getHeaders())
+  return axios.post(`${baseUrl}/api/images/${imageId}/like/`, image, getHeaders())
 }
 
 
