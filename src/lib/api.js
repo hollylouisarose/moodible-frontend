@@ -19,7 +19,7 @@ export function getSingleImage(imageId){
 }
 
 export function favouriteImage(imageId, image){
-  return axios.post(`${baseUrl}/api/images/${imageId}/like/`, image, getHeaders())
+  return axios.post(`${baseUrl}/images/${imageId}/like/`, image, getHeaders())
 }
 
 
@@ -38,7 +38,7 @@ export function addNote(userId, formData){
 }
 
 export function editNote(userId, noteId, formData){
-  return axios.put(`/api/images/${userId}/notes/${noteId}/`, formData, getHeaders())
+  return axios.put(`${baseUrl}/images/${userId}/notes/${noteId}/`, formData, getHeaders())
 }
 
 export function deleteNote(userId, noteId){
