@@ -1,4 +1,4 @@
-# mood.ible
+# Mood.ible
 
 A solo coding project by Holly Stratton (7 days) 
 
@@ -8,7 +8,7 @@ This project was deployed using Netlify and Heroku and can be [found here.](http
 
 ### Getting started
 
-* Clone or download repository for [frontend](https://github.com/hollylouisarose/project-four-frontend) and [backend](https://github.com/hollylouisarose/project-four-backend)of mood.ible.
+* Clone or download repository for [frontend](https://github.com/hollylouisarose/project-four-frontend) and [backend](https://github.com/hollylouisarose/project-four-backend) of mood.ible.
 
 For frontend:
 * `npm i` to install frontend dependencies.
